@@ -11,6 +11,7 @@ A repository for all my practice challenges and projects built throughout [100 D
 [Quiz Game](./quiz-game/) ⍰🤨 \
 [Turtle Race](./turtle-race/) 🐢 \
 [Snake Game](./snake-game/) 🐍 \
+[IN PROGRESS - Pong Game](./pong-game/) 🏓
 
 
 
@@ -20,4 +21,4 @@ A repository for all my practice challenges and projects built throughout [100 D
 [Day 17](./day-17/) \
 [Day 18](./day-18/) \
 [Day 19](./day-19/) \
-[Etch-a-Sketch](./etch-a-sketch/) \
+[Etch-a-Sketch](./etch-a-sketch/) 
