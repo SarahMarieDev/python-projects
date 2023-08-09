@@ -23,7 +23,7 @@ Steps:
 - [x]  Create the screen
 - [x]  Create and move a paddle
 - [x]  Create another paddle
-- [ ]  Create the ball and make it move
+- [x]  Create the ball and make it move
 - [ ]  Detect collision with wall and bounce
 - [ ]  Detect collision with paddle
 - [ ]  Detect when paddle misses
