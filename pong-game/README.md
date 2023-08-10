@@ -13,6 +13,12 @@ Created the ball class, initialized the ball and created a move() method to make
 
 I then created the bounce() method so that the ball would bounce off the top or bottom of the screen. I had some challenges with that described below.
 
+### 08-09-2023:
+Today I finished the pong game. I wrote the code to detect a collision with either of the paddles, detect when the paddle misses and keep the score.
+
+I didn’t really experience too many challenges today. The only thing I couldn’t figure out was to keep my ball moving by 1px only and still increase the speed with every turn. So I ended up modifying it back the original way at 10px and using the time.sleep() method.
+
+I created the game over sequence to be when one player gets a score of 10, then the program ends.
 
 ## Challenges experienced
 
