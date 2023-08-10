@@ -9,8 +9,9 @@ class Ball(Turtle):
         self.color("white")
         self.penup()
         self.goto(0, 0)
-        self.dx = 1  # horizontal movement
-        self.dy = 1  # vertical movement
+        self.dx = 10  # horizontal movement
+        self.dy = 10  # vertical movement
+        self.move_speed = 0.1
 
     def move_left(self):
         new_x = self.xcor() - self.dx
@@ -27,6 +28,7 @@ class Ball(Turtle):
 
     def bounce_x(self):
         self.dx *= -1  # reverse horizontal direction
+        self.move_speed *= 0.9
         
     def reset_position(self):
         self.goto(0, 0)
