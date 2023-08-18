@@ -4,23 +4,33 @@ from player import Player
 from car_manager import CarManager
 from scoreboard import Scoreboard
 
-# TODO 2: Create a turtle player that starts at the bottom of the screen
-player = Player()
-
+# Screen setup
 screen = Screen()
 screen.setup(width=600, height=600)
 screen.tracer(0)
-screen.exitonclick()
+
+# Create the player turtle
+player = Player()
+
+ # TODO 3: Create the cars
+car_group = CarManager()
+
 
 game_is_on = True
 while game_is_on:
     time.sleep(0.1)
     screen.update()
+    
+    
+   
+    
 
-# TODO 3: Listen for the "Up" keypress to move the turtle north.
+    # Move the player turtle
+    screen.listen()
+    screen.onkey(player.move, "Up")
 
 
-# TODO 4: Create and move the cars
+# TODO 4: move the cars
 
 
 # TODO 6: Detect collision with car
@@ -33,3 +43,5 @@ while game_is_on:
 
 
 # TODO 10: Create a "Level" and increase difficulty
+
+screen.exitonclick()
