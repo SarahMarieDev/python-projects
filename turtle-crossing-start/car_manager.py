@@ -28,6 +28,15 @@ class CarManager(Turtle):
         for car in self.all_cars:
             car.forward(self.car_speed)
 
+    def remove_offscreen_cars(self):
+        for car in self.all_cars:
+            if car.xcor() < -300:
+                car.hideturtle()
+                self.all_cars.remove(car)
+
+    def increase_speed(self):
+        self.car_speed += MOVE_INCREMENT
+
         
 
 

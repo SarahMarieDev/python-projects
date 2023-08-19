@@ -13,6 +13,8 @@ screen.tracer(0)
 player = Player()
 car_manager = CarManager()
 
+# TODO: Create scoreboard
+
 game_is_on = True
 while game_is_on:
     time.sleep(0.1)
@@ -21,23 +23,21 @@ while game_is_on:
     # Create and move the cars
     car_manager.create_car()
     car_manager.move_cars()
-    
+    car_manager.remove_offscreen_cars()
 
     # Move the player turtle
     screen.listen()
     screen.onkey(player.move, "Up")
 
+    # TODO Detect collision with car
+    for car in car_manager.all_cars:
+        if car.distance(player) < 30:
+            game_is_on = False
 
 
-# TODO 6: Detect collision with car
+    # TODO Detect collision with finish line
 
 
-# TODO 8: Create scoreboard
-
-
-# TODO 9: Detect collision with finish line
-
-
-# TODO 10: Create a "Level" and increase difficulty
+    # TODO Create a "Level" and increase difficulty
 
 screen.exitonclick()
