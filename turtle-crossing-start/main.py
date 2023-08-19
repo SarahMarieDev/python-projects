@@ -11,26 +11,22 @@ screen.tracer(0)
 
 # Create the player turtle
 player = Player()
-
- # TODO 3: Create the cars
-car_group = CarManager()
-
+car_manager = CarManager()
 
 game_is_on = True
 while game_is_on:
     time.sleep(0.1)
     screen.update()
     
-    
-   
+    # Create and move the cars
+    car_manager.create_car()
+    car_manager.move_cars()
     
 
     # Move the player turtle
     screen.listen()
     screen.onkey(player.move, "Up")
 
-
-# TODO 4: move the cars
 
 
 # TODO 6: Detect collision with car
