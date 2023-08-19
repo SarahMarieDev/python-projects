@@ -16,5 +16,11 @@ class Player(Turtle):
         self.setpos(STARTING_POSITION)
         
         
-    def move(self):
+    def move_forward(self):
         self.forward(MOVE_DISTANCE)
+
+    def move_backward(self):
+        self.backward(MOVE_DISTANCE)
+
+    def reset_position(self):
+        self.setpos(STARTING_POSITION)

@@ -19,6 +19,10 @@ game_is_on = True
 while game_is_on:
     time.sleep(0.1)
     screen.update()
+
+
+    # Create the scoreboard
+    scoreboard = Scoreboard()
     
     # Create and move the cars
     car_manager.create_car()
@@ -27,17 +31,22 @@ while game_is_on:
 
     # Move the player turtle
     screen.listen()
-    screen.onkey(player.move, "Up")
+    screen.onkey(player.move_forward, "Up")
+    screen.onkey(player.move_backward, "Down")
 
-    # TODO Detect collision with car
+    # Detect collision with car
     for car in car_manager.all_cars:
         if car.distance(player) < 30:
+            scoreboard.game_over()
             game_is_on = False
 
 
-    # TODO Detect collision with finish line
+    # Detect collision with finish line
+    if player.ycor() > 280:
+        player.reset_position()
+        car_manager.increase_speed()
+        scoreboard.increase_score()
 
 
-    # TODO Create a "Level" and increase difficulty
 
 screen.exitonclick()
