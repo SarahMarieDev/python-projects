@@ -22,4 +22,6 @@ A repository for all my practice challenges and projects built throughout [100 D
 [Day 17](./day-17/) \
 [Day 18](./day-18/) \
 [Day 19](./day-19/) \
-[Etch-a-Sketch](./etch-a-sketch/) 
+[Day 24](./day-24/) \
+[Etch-a-Sketch](./etch-a-sketch/) \
+[Mail Merge](./mail-merge-project/)
