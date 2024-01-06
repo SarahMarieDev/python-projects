@@ -9,20 +9,27 @@ screen.addshape(image)
 turtle.shape(image)
 
 state_data = pandas.read_csv("50_states.csv")
+states = state_data["state"].to_list()
 
 game_over = False
 guesses = []
 
 while len(guesses) < 50:
-    answer_state = screen.textinput(title=f"{len(guesses)}/50 States Correct", prompt="What is another state's name?")
+    answer_state = screen.textinput(title=f"{len(guesses)}/50 States Correct", prompt="What is another state's name?").title()
 
     if answer_state is None:
         game_over = True
         break
 
-    answer_state = answer_state.title()
+    if answer_state == "Exit":
+        missed_states = []
+        for state in states:
+            if state not in guesses:
+                missed_states.append(state)
+        states_to_learn = pandas.DataFrame(missed_states)
+        states_to_learn.to_csv("states_to_learn.csv")
+        break
 
-    states = state_data["state"].to_list()
     current_state = state_data[state_data["state"] == answer_state]
 
     if answer_state in states:
