@@ -12,7 +12,8 @@ A repository for all my practice challenges and projects built throughout [100 D
 [Turtle Race](./turtle-race/) 🐢 \
 [Snake Game](./snake-game/) 🐍 \
 [Pong Game](./pong-game/) 🏓 \
-[Turtle Crossing Game](./turtle-crossing/) 🐢🚗💨 
+[Turtle Crossing Game](./turtle-crossing/) 🐢🚗💨 \
+[US States Game](./us-states-game/) 🇺🇸🗺️
 
 
 

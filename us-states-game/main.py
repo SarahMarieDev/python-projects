@@ -42,7 +42,3 @@ while len(guesses) < 50:
 
 if len(guesses) == 50:
     messagebox.showinfo(title="Game Over", message="You've guessed all 50 states.")
-
-
-
-
