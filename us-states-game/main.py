@@ -15,11 +15,13 @@ game_over = False
 guesses = []
 
 while len(guesses) < 50:
-    answer_state = screen.textinput(title=f"{len(guesses)}/50 States Correct", prompt="What is another state's name?").title()
+    answer_state = screen.textinput(title=f"{len(guesses)}/50 States Correct", prompt="What is another state's name?")
 
     if answer_state is None:
         game_over = True
         break
+
+    answer_state = answer_state.title()
 
     if answer_state == "Exit":
         missed_states = []
