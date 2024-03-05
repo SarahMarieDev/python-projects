@@ -14,7 +14,8 @@ A repository for all my practice challenges and projects built throughout [100 D
 [Pong Game](./pong-game/) 🏓 \
 [Turtle Crossing Game](./turtle-crossing/) 🐢🚗💨 \
 [US States Game](./us-states-game/) 🇺🇸🗺️ \
-[NATO Alphabet](./NATO-alphabet/) 🔠
+[NATO Alphabet](./NATO-alphabet/) 🔠 \
+[Miles to Kilometers Converter](./miles-to-km-converter/)
 
 
 
