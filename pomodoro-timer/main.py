@@ -17,7 +17,14 @@ timer_on = False
 
 # TIMER RESET
 def reset_timer():
+    global timer_on
+    global reps
     window.after_cancel(timer)
+    timer_label.config(text="Timer", fg="black")
+    canvas.itemconfig(timer_text, text="00:00")
+    checkmark_label.config(text="")
+    timer_on = False
+    reps = 0
 
 
 # TIMER MECHANISM
@@ -26,11 +33,12 @@ def start_timer():
     global timer_on
     reps += 1
 
+    work_sec = WORK_MIN * 60
+    short_break_sec = SHORT_BREAK_MIN * 60
+    long_break_sec = LONG_BREAK_MIN * 60
+
     if not timer_on:
         timer_on = True
-        work_sec = WORK_MIN * 60
-        short_break_sec = SHORT_BREAK_MIN * 60
-        long_break_sec = LONG_BREAK_MIN * 60
 
         if reps % 8 == 0:
             count_down(long_break_sec)
