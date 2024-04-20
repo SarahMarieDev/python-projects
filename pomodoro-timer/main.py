@@ -20,9 +20,9 @@ def start_timer():
     global reps
     reps += 1
 
-    work_sec = WORK_MIN * 60
-    short_break_sec = SHORT_BREAK_MIN * 60
-    long_break_sec = LONG_BREAK_MIN * 60
+    work_sec = 2#WORK_MIN * 60
+    short_break_sec = 2#SHORT_BREAK_MIN * 60
+    long_break_sec = 2#LONG_BREAK_MIN * 60
 
     if reps % 8 == 0:
         count_down(long_break_sec)
@@ -44,6 +44,13 @@ def count_down(count):
     canvas.itemconfig(timer, text=f"{count_min}:{count_sec}")
     if count > 0:
         window.after(1000, count_down, count - 1)
+    else:
+        start_timer()
+        mark = ""
+        work_sessions = math.floor(reps / 2)
+        for _ in range(work_sessions):
+            marks += "✔"
+            checkmark_label.config(text=marks)
 
 
 # UI SETUP
@@ -61,7 +68,7 @@ timer_label = Label(text="Timer", font=(FONT_NAME, 55), fg="black", bg=BEIGE)
 timer_label.grid(column=1, row=0)
 timer_label.config(pady=10)
 
-checkmark_label = Label(fg=BLUE, bg=BEIGE)
+checkmark_label = Label(text="", fg=BLUE, bg=BEIGE)
 checkmark_label.grid(column=1, row=3)
 
 start_button = Button(text="Start", highlightbackground=BEIGE, command=start_timer)
