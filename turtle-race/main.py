@@ -41,7 +41,7 @@ def start_race():
             rand_distance = random.randint(0, 10)
             turtle.forward(rand_distance)
 
-#TODO: Create popup asking to restart the game
+
 start_race()
 
 screen.exitonclick()

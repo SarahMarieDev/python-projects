@@ -66,23 +66,3 @@ class Ball(Turtle):
     def bounce(self):
         self.dy *= -1 # reverse vertical direction
 ```
-
-------------
-### TODOs:
-
-Classes for components:
-
-- Paddle
-- Ball
-- Scoreboard
-
-Steps:
-
-- [x]  Create the screen
-- [x]  Create and move a paddle
-- [x]  Create another paddle
-- [x]  Create the ball and make it move
-- [x]  Detect collision with wall and bounce
-- [ ]  Detect collision with paddle
-- [ ]  Detect when paddle misses
-- [ ]  Keep score
