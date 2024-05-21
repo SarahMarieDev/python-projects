@@ -2,6 +2,7 @@ from random import choice, randint, shuffle
 from tkinter import *
 from tkinter import simpledialog
 from tkinter import messagebox
+import pyperclip
 
 
 def generate_password():
@@ -18,12 +19,10 @@ def generate_password():
     pw_numbers = [choice(numbers) for _ in range(randint(2, 4))]
 
     password_list = pw_letters + pw_symbols + pw_numbers
-
     shuffle(password_list)
-
     generated_password = "".join(password_list)
-
     password_entry.insert(0, generated_password)
+    pyperclip.copy(generated_password)
 
 
 def custom_askokcancel(title, message):
