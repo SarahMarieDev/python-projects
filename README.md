@@ -15,8 +15,9 @@ A repository for all my practice challenges and projects built throughout [100 D
 [Turtle Crossing Game](./turtle-crossing/) 🐢🚗💨 \
 [US States Game](./us-states-game/) 🇺🇸🗺️ \
 [NATO Alphabet](./NATO-alphabet/) 🔠 \
-[Miles to Kilometers Converter](./miles-to-km-converter/) \
-[Pomodoro Timer](./pomodoro-timer/)
+[Miles to Kilometers Converter](./miles-to-km-converter/) 🌍➡️🔢 \
+[Pomodoro Timer](./pomodoro-timer/) 🍅 \
+[Password Manager](./password-manager/) 🔐
 
 
 ### Practice Challenges
