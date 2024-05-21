@@ -5,14 +5,14 @@ from tkinter import *
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def save_password():
-    password_file = open("../../../Documents/Data.txt", "a")
     website = website_entry.get().strip()
     login = login_entry.get().strip()
     password = password_entry.get().strip()
-    password_file.write(f"{website} | {login} | {password}\n")
-    password_file.close()
-    website_entry.delete(0, END)
-    password_entry.delete(0, END)
+
+    with open("../../../Documents/Data.txt", "a") as password_file:
+        password_file.write(f"{website} | {login} | {password}\n")
+        website_entry.delete(0, END)
+        password_entry.delete(0, END)
 
 
 # TODO: Add validation to check for .com on website field
