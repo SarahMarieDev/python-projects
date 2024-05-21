@@ -1,16 +1,44 @@
 from tkinter import *
-from tkinter import messagebox
+from tkinter import simpledialog
 
 
-# ---------------------------- PASSWORD GENERATOR ------------------------------- #
+def custom_askokcancel(title, message):
+    dialog = Toplevel(window)
+    dialog.title(title)
+    dialog.geometry("300x250")
 
-# ---------------------------- SAVE PASSWORD ------------------------------- #
+    Label(dialog, text=message, wraplength=250).pack(pady=20)
+
+    def on_ok():
+        dialog.destroy()
+        return True
+
+    def on_cancel():
+        dialog.destroy()
+        return False
+
+    ok_button = Button(dialog, text="OK", command=on_ok)
+    ok_button.pack(side=LEFT, padx=20, pady=20)
+
+    cancel_button = Button(dialog, text="Cancel", command=on_cancel)
+    cancel_button.pack(side=RIGHT, padx=20, pady=20)
+
+    dialog.transient(window)
+    dialog.grab_set()
+    window.wait_window(dialog)
+
+    return True
+
+
 def save_password():
     website = website_entry.get()
     login = login_entry.get()
     password = password_entry.get()
 
-    is_ok = messagebox.askokcancel(title=website, message=f"These are the details entered for {website}: \nEmail/Username: {login}\n Password: {password}\n Do you wish to continue?", icon="question")
+    is_ok = custom_askokcancel(
+        title=website,
+        message=f"These are the details entered: \nEmail/Username: {login}\n Password: {password}\n Do you wish to continue?"
+    )
 
     if is_ok:
         with open("../../../Documents/Data.txt", "a") as password_file:
@@ -19,7 +47,6 @@ def save_password():
             password_entry.delete(0, END)
 
 
-# ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
 window.title("Password Manager")
 window.config(padx=50, pady=50)
