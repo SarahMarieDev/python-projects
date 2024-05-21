@@ -1,25 +1,31 @@
 from tkinter import *
+from tkinter import messagebox
 
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def save_password():
-    website = website_entry.get().strip()
-    login = login_entry.get().strip()
-    password = password_entry.get().strip()
+    website = website_entry.get()
+    login = login_entry.get()
+    password = password_entry.get()
 
-    with open("../../../Documents/Data.txt", "a") as password_file:
-        password_file.write(f"{website} | {login} | {password}\n")
-        website_entry.delete(0, END)
-        password_entry.delete(0, END)
+    # TODO: Create a custom dialogue box
+    is_ok = messagebox.askokcancel(title=website, message=f"These are the details entered for {website}: \nEmail/Username: {login}\n Password: {password}\n Do you wish to continue?", icon="question")
+
+    if is_ok:
+        with open("../../../Documents/Data.txt", "a") as password_file:
+            password_file.write(f"{website} | {login} | {password}\n")
+            website_entry.delete(0, END)
+            password_entry.delete(0, END)
 
 
-# TODO: Add validation to check for .com on website field
+# TODO: Add URL field
 # TODO: Add logic to check if login exists. Option to change or add new.
-# TODO: Delete functionality?
-# TODO: Search functionality?
-# TODO: Copy fields functionality?
+# TODO: Search functionality
+# TODO: Edit functionality
+# TODO: Delete functionality
+# TODO: Copy URL, login and passwords fields functionality
 
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
