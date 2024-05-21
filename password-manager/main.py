@@ -23,8 +23,7 @@ def generate_password():
 
     generated_password = "".join(password_list)
 
-    print(f"Your password is: {generated_password}")
-
+    password_entry.insert(0, generated_password)
 
 
 def custom_askokcancel(title, message):
@@ -105,7 +104,7 @@ password_label.grid(column=0, row=3)
 password_entry = Entry(width=21)
 password_entry.grid(column=1, row=3, sticky="nsew")
 
-generate_button = Button(text="Generate Password")
+generate_button = Button(text="Generate Password", command=generate_password)
 generate_button.grid(column=2, row=3, sticky="nsew")
 
 add_button = Button(text="Add", width=36, command=save_password)
