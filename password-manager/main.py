@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import simpledialog
+from tkinter import messagebox
 
 
 def custom_askokcancel(title, message):
@@ -7,15 +8,17 @@ def custom_askokcancel(title, message):
     dialog.title(title)
     dialog.geometry("300x250")
 
+    result = [False]
+
     Label(dialog, text=message, wraplength=250).pack(pady=20)
 
     def on_ok():
+        result[0] = True
         dialog.destroy()
-        return True
 
     def on_cancel():
+        result[0] = False
         dialog.destroy()
-        return False
 
     ok_button = Button(dialog, text="OK", command=on_ok)
     ok_button.pack(side=LEFT, padx=20, pady=20)
@@ -27,7 +30,7 @@ def custom_askokcancel(title, message):
     dialog.grab_set()
     window.wait_window(dialog)
 
-    return True
+    return result[0]
 
 
 def save_password():
@@ -35,16 +38,21 @@ def save_password():
     login = login_entry.get()
     password = password_entry.get()
 
-    is_ok = custom_askokcancel(
-        title=website,
-        message=f"These are the details entered: \nEmail/Username: {login}\n Password: {password}\n Do you wish to continue?"
-    )
+    print(website, password)
 
-    if is_ok:
-        with open("../../../Documents/Data.txt", "a") as password_file:
-            password_file.write(f"{website} | {login} | {password}\n")
-            website_entry.delete(0, END)
-            password_entry.delete(0, END)
+    if len(website) == 0 or len(password) == 0:
+        messagebox.showinfo(title="Oops", message="Please don't leave any fields empty!")
+    else:
+        is_ok = custom_askokcancel(
+            title=website,
+            message=f"These are the details entered: \nEmail/Username: {login}\n Password: {password}\n Do you wish to continue?"
+        )
+
+        if is_ok:
+            with open("../../../Documents/Data.txt", "a") as password_file:
+                password_file.write(f"{website} | {login} | {password}\n")
+                website_entry.delete(0, END)
+                password_entry.delete(0, END)
 
 
 window = Tk()
