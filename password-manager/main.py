@@ -10,7 +10,6 @@ def save_password():
     login = login_entry.get()
     password = password_entry.get()
 
-    # TODO: Create a custom dialogue box
     is_ok = messagebox.askokcancel(title=website, message=f"These are the details entered for {website}: \nEmail/Username: {login}\n Password: {password}\n Do you wish to continue?", icon="question")
 
     if is_ok:
@@ -19,13 +18,6 @@ def save_password():
             website_entry.delete(0, END)
             password_entry.delete(0, END)
 
-
-# TODO: Add URL field
-# TODO: Add logic to check if login exists. Option to change or add new.
-# TODO: Search functionality
-# TODO: Edit functionality
-# TODO: Delete functionality
-# TODO: Copy URL, login and passwords fields functionality
 
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
