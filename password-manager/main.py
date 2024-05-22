@@ -25,36 +25,6 @@ def generate_password():
     pyperclip.copy(generated_password)
 
 
-def custom_askokcancel(title, message):
-    dialog = Toplevel(window)
-    dialog.title(title)
-    dialog.geometry("300x250")
-
-    result = [False]
-
-    Label(dialog, text=message, wraplength=250).pack(pady=20)
-
-    def on_ok():
-        result[0] = True
-        dialog.destroy()
-
-    def on_cancel():
-        result[0] = False
-        dialog.destroy()
-
-    ok_button = Button(dialog, text="OK", command=on_ok)
-    ok_button.pack(side=LEFT, padx=20, pady=20)
-
-    cancel_button = Button(dialog, text="Cancel", command=on_cancel)
-    cancel_button.pack(side=RIGHT, padx=20, pady=20)
-
-    dialog.transient(window)
-    dialog.grab_set()
-    window.wait_window(dialog)
-
-    return result[0]
-
-
 def save_password():
     website = website_entry.get()
     login = login_entry.get()
@@ -65,9 +35,9 @@ def save_password():
     if len(website) == 0 or len(password) == 0:
         messagebox.showinfo(title="Oops", message="Please don't leave any fields empty!")
     else:
-        is_ok = custom_askokcancel(
+        is_ok = messagebox.askokcancel(
             title=website,
-            message=f"These are the details entered: \nEmail/Username: {login}\n Password: {password}\n Do you wish to continue?"
+            message=f"Credentials entered for {website}: \n\n{login}\n {password}\n\n Do you wish to continue?"
         )
 
         if is_ok:
