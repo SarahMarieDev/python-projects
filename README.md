@@ -30,5 +30,6 @@ A repository for all my practice challenges and projects built throughout [100 D
 [Day 25](./day-25/) \
 [Day 26](./day-26/) \
 [Day 27](./day-27/) \
+[Day 30](./day-30/) \
 [Etch-a-Sketch](./etch-a-sketch/) \
 [Mail Merge](./mail-merge-project/)
