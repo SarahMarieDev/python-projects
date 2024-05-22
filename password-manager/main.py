@@ -75,6 +75,7 @@ def save_password():
                 password_file.write(f"{website} | {login} | {password}\n")
                 website_entry.delete(0, END)
                 password_entry.delete(0, END)
+                messagebox.showinfo(title="Success", message=f"Login information for {website} saved successfully.")
 
 
 window = Tk()
