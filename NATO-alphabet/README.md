@@ -16,3 +16,5 @@ that matches each of the letters in the word. My daily notes are below.
 ### Challenges
 
 1. The first “bug” I encountered was when I was trying to just print the values from the letters as keys. Since after the first letter, they were lowercase, I added code to change them to uppercase and resolved that issue.
+
+## 05-22-2024
