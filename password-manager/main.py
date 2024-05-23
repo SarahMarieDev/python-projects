@@ -3,6 +3,7 @@ from tkinter import *
 from tkinter import simpledialog
 from tkinter import messagebox
 import pyperclip
+import json
 
 
 def generate_password():
@@ -29,14 +30,20 @@ def generate_password():
 
 def save_password():
     website = website_entry.get()
-    login = login_entry.get()
+    email = login_entry.get()
     password = password_entry.get()
+    new_data = {
+        website: {
+            "email": email,
+            "password": password,
+        }
+    }
 
     if len(website) == 0 or len(password) == 0:
         messagebox.showinfo(title="Oops", message="Please don't leave any fields empty!")
     else:
-        with open("../../../Documents/Data.txt", "a") as password_file:
-            password_file.write(f"{website} | {login} | {password}\n")
+        with open("../../../Documents/Data.json", "w") as password_file:
+            json.dump(new_data, password_file, indent=4)
             website_entry.delete(0, END)
             password_entry.delete(0, END)
             messagebox.showinfo(title="Success", message=f"Login information for {website} saved successfully.")
