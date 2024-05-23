@@ -69,9 +69,12 @@ canvas.grid(column=1, row=0)
 
 website_label = Label(text="Website:")
 website_label.grid(column=0, row=1)
-website_entry = Entry(width=35)
-website_entry.grid(column=1, row=1, columnspan=2, sticky="nsew")
+website_entry = Entry(width=21)
+website_entry.grid(column=1, row=1, sticky="nsew")
 website_entry.focus()
+
+search_button = Button(text="Search")
+search_button.grid(column=2, row=1, sticky="nsew")
 
 login_label = Label(text="Email/Username:")
 login_label.grid(column=0, row=2)
