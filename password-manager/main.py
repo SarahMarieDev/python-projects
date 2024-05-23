@@ -58,6 +58,22 @@ def save_password():
     messagebox.showinfo(title="Success", message=f"Login information for {website} saved successfully.")
 
 
+def find_password():
+    website = website_entry.get()
+    try:
+        with open("../../../Documents/Data.json", "r") as password_file:
+            data = json.load(password_file)
+            search_result = data[website]
+    except FileNotFoundError:
+        messagebox.showinfo(message="No data file found.")
+    except KeyError:
+        messagebox.showinfo(message=f"Details for {website} do not exist.")
+    else:
+        for key, value in search_result.items():
+            globals()[key] = value
+        messagebox.showinfo(title=f"{website}", message=f"Details for {website}: \n\nEmail: {email}\nPassword: {password}")
+
+
 window = Tk()
 window.title("Password Manager")
 window.config(padx=50, pady=50)
@@ -73,7 +89,7 @@ website_entry = Entry(width=21)
 website_entry.grid(column=1, row=1, sticky="nsew")
 website_entry.focus()
 
-search_button = Button(text="Search")
+search_button = Button(text="Search", command=find_password)
 search_button.grid(column=2, row=1, sticky="nsew")
 
 login_label = Label(text="Email/Username:")
