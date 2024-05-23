@@ -32,22 +32,14 @@ def save_password():
     login = login_entry.get()
     password = password_entry.get()
 
-    print(website, password)
-
     if len(website) == 0 or len(password) == 0:
         messagebox.showinfo(title="Oops", message="Please don't leave any fields empty!")
     else:
-        is_ok = messagebox.askokcancel(
-            title=website,
-            message=f"Credentials entered for {website}: \n\n{login}\n {password}\n\n Do you wish to continue?"
-        )
-
-        if is_ok:
-            with open("../../../Documents/Data.txt", "a") as password_file:
-                password_file.write(f"{website} | {login} | {password}\n")
-                website_entry.delete(0, END)
-                password_entry.delete(0, END)
-                messagebox.showinfo(title="Success", message=f"Login information for {website} saved successfully.")
+        with open("../../../Documents/Data.txt", "a") as password_file:
+            password_file.write(f"{website} | {login} | {password}\n")
+            website_entry.delete(0, END)
+            password_entry.delete(0, END)
+            messagebox.showinfo(title="Success", message=f"Login information for {website} saved successfully.")
 
 
 window = Tk()
