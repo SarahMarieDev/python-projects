@@ -63,15 +63,15 @@ def find_password():
     try:
         with open("../../../Documents/Data.json", "r") as password_file:
             data = json.load(password_file)
-            search_result = data[website]
     except FileNotFoundError:
         messagebox.showinfo(message="No data file found.")
-    except KeyError:
-        messagebox.showinfo(message=f"Details for {website} do not exist.")
     else:
-        for key, value in search_result.items():
-            globals()[key] = value
-        messagebox.showinfo(title=f"{website}", message=f"Details for {website}: \n\nEmail: {email}\nPassword: {password}")
+        if website in data:
+            email = data[website]["email"]
+            password = data[website]["password"]
+            messagebox.showinfo(title=f"{website}", message=f"Details for {website}: \n\nEmail: {email}\nPassword: {password}")
+        else:
+            messagebox.showinfo(message=f"Details for {website} do not exist.")
 
 
 window = Tk()
