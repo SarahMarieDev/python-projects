@@ -19,7 +19,7 @@ This project is a simple password manager application built using Python and Tki
 
 1. **Clone the repository**:
     ```sh
-    git clone https://github.com/yourusername/password-manager.git
+    git clone https://github.com/SarahMarieDev/password-manager.git
     cd password-manager
     ```
 
