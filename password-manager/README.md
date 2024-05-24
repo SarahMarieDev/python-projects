@@ -41,4 +41,5 @@ This project is a simple password manager application built using Python and Tki
 3. **Save Password**:
     - Enter the website and login details.
     - Click "Add" to save the password.
-
+4. **Search for login details**:
+    - Enter the website and click "Search".
