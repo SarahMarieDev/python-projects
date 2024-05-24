@@ -49,10 +49,13 @@ def save_password():
             with open("../../../Documents/Data.json", "w") as password_file:
                 json.dump(new_data, password_file, indent=4)
         else:
-            data.update(new_data)
-            with open("../../../Documents/Data.json", "w") as password_file:
-                json.dump(data, password_file, indent=4)
-            messagebox.showinfo(title="Success", message=f"Login information for {website} saved successfully.")
+            if website in data:
+                is_ok = messagebox.askokcancel(message=f"Login for {website} already exists, would you like to update login details?")
+                if is_ok:
+                    data.update(new_data)
+                    with open("../../../Documents/Data.json", "w") as password_file:
+                        json.dump(data, password_file, indent=4)
+                    messagebox.showinfo(title="Success", message=f"Login information for {website} saved successfully.")
         finally:
             website_entry.delete(0, END)
             password_entry.delete(0, END)
