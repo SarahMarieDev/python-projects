@@ -52,10 +52,10 @@ def save_password():
             data.update(new_data)
             with open("../../../Documents/Data.json", "w") as password_file:
                 json.dump(data, password_file, indent=4)
+            messagebox.showinfo(title="Success", message=f"Login information for {website} saved successfully.")
         finally:
             website_entry.delete(0, END)
             password_entry.delete(0, END)
-    messagebox.showinfo(title="Success", message=f"Login information for {website} saved successfully.")
 
 
 def find_password():
