@@ -74,6 +74,25 @@ def find_password():
             messagebox.showinfo(message=f"Details for {website} do not exist.")
 
 
+def delete_entry():
+    website = website_entry.get()
+    try:
+        with open("../../../Documents/Data.json", "r") as password_file:
+            data = json.load(password_file)
+    except FileNotFoundError:
+        messagebox.showinfo(message="No data file found.")
+    else:
+        if website in data:
+            del data[website]
+            messagebox.showinfo(title=f"{website}", message=f"Details for {website} have been deleted.")
+        else:
+            messagebox.showinfo(message=f"Details for {website} do not exist.")
+        with open("../../../Documents/Data.json", "w") as password_file:
+            json.dump(data, password_file, indent=4)
+    finally:
+        website_entry.delete(0, END)
+
+
 window = Tk()
 window.title("Password Manager")
 window.config(padx=50, pady=50)
@@ -106,7 +125,10 @@ password_entry.grid(column=1, row=3, sticky="nsew")
 generate_button = Button(text="Generate Password", command=generate_password)
 generate_button.grid(column=2, row=3, sticky="nsew")
 
-add_button = Button(text="Add", width=36, command=save_password)
-add_button.grid(column=1, row=4, columnspan=2, sticky="nsew")
+add_button = Button(text="Add", command=save_password)
+add_button.grid(column=1, row=4, sticky="nsew")
+
+delete_button = Button(text="Delete", command=delete_entry)
+delete_button.grid(column=2, row=4, sticky="nsew")
 
 window.mainloop()
