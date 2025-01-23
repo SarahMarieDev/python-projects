@@ -17,7 +17,8 @@ A repository for all my practice challenges and projects built throughout [100 D
 [NATO Alphabet](./NATO-alphabet/) 🔠 \
 [Miles to Kilometers Converter](./miles-to-km-converter/) 🌍➡️🔢 \
 [Pomodoro Timer](./pomodoro-timer/) 🍅 \
-[Password Manager](./password-manager/) 🔐
+[Password Manager](./password-manager/) 🔐 \
+[Automated Birtday Wisher](./birthday-wisher-extrahard/) 🎂
 
 
 ### Practice Challenges
