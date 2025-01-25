@@ -1,6 +1,7 @@
 import requests
 import smtplib
 import os
+import time
 from datetime import datetime
 from dotenv import load_dotenv
 
@@ -61,4 +62,4 @@ def is_night():
 if is_iss_overhead() and is_night():
     send_email()
 
-# BONUS: run the code every 60 seconds.
+
