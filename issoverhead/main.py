@@ -30,6 +30,11 @@ iss_latitude = float(data["iss_position"]["latitude"])
 iss_longitude = float(data["iss_position"]["longitude"])
 print(iss_latitude, iss_longitude)
 #Your position is within +5 or -5 degrees of the ISS position.
+
+# testing
+# MY_LAT = iss_latitude
+# MY_LNG = iss_longitude
+
 delta_lat = abs(MY_LAT - iss_latitude)
 delta_long = abs(MY_LNG - iss_longitude)
 
@@ -48,9 +53,13 @@ sunset = int(data["results"]["sunset"].split("T")[1].split(":")[0])
 
 current_hour = datetime.now().hour
 
+# testing
+# sunrise = 7
+# sunset = 12
+
 
 if delta_lat <= 5 and delta_long <= 5:
-    if current_hour > sunset and current_hour < sunrise:
+    if current_hour > sunset or current_hour < sunrise:
         send_email(email, password)
 
 # BONUS: run the code every 60 seconds.
