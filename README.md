@@ -35,5 +35,5 @@ A repository for all my practice challenges and projects built throughout [100 D
 [Etch-a-Sketch](./etch-a-sketch/) \
 [Mail Merge](./mail-merge-project/) \
 [Day 32](./day-32/) \
-[Kanye-Says...](./kanye-says)
+[Kanye-Says...](./kanye-says) \
 [Day 33](./day-33/)
