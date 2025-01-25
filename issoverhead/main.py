@@ -1,11 +1,26 @@
 import requests
-from datetime import datetime
 import smtplib
+import os
+from datetime import datetime
+from dotenv import load_dotenv
+
 
 MY_LAT = 45.180523
 MY_LNG = -89.683456
 
+load_dotenv(os.path.join(os.path.dirname(__file__), '..', '.env'))
+email = os.getenv('GMAIL')
+password = os.getenv('PASSWORD')
 
+def send_email(email, password):
+    with smtplib.SMTP("smtp.gmail.com") as connection:
+        connection.starttls()
+        connection.login(user=email, password=password)
+        connection.sendmail(
+            from_addr=email,
+            to_addrs="sarahmarie73@gmail.com",
+            msg="Subject:ISS is overhead\n\nLook up!"
+        )
 
 response = requests.get(url="http://api.open-notify.org/iss-now.json")
 response.raise_for_status()
@@ -36,9 +51,8 @@ current_hour = datetime.now().hour
 
 if delta_lat <= 5 and delta_long <= 5:
     if current_hour > sunset and current_hour < sunrise:
-        send_email()
+        send_email(email, password)
 
-# Then send me an email to tell me to look up.
 # BONUS: run the code every 60 seconds.
 
 
