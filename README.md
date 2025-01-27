@@ -19,7 +19,8 @@ A repository for all my practice challenges and projects built throughout [100 D
 [Pomodoro Timer](./pomodoro-timer/) 🍅 \
 [Password Manager](./password-manager/) 🔐 \
 [Automated Birthday Wisher](./birthday-wisher-extrahard/) 🎂 \
-[ISS Overhead](./iss-overhead) 🛰️
+[ISS Overhead](./iss-overhead) 🛰️ \
+[Quiz Game - GUI](./quizzler-app/) ⍰🤨
 
 
 ### Practice Challenges
