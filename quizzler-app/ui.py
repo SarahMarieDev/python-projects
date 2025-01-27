@@ -27,11 +27,11 @@ class QuizInterface:
         )
 
         check_image = PhotoImage(file="images/true.png")
-        self.true_button = Button(image=check_image, highlightthickness=0, bd=0)
+        self.true_button = Button(image=check_image, highlightthickness=0, command=self.answer_true, bd=0)
         self.true_button.grid(column=0, row=2, padx=20, pady=20)
 
         cross_image = PhotoImage(file="images/false.png")
-        self.false_button = Button(image=cross_image, highlightthickness=0, bd=0)
+        self.false_button = Button(image=cross_image, highlightthickness=0, command=self.answer_false, bd=0)
         self.false_button.grid(column=1, row=2, padx=20, pady=20)
 
         self.get_next_question()
@@ -44,3 +44,13 @@ class QuizInterface:
 
     def get_score(self):
         return self.quiz.score
+
+    def answer_true(self):
+        self.quiz.check_answer("True")
+        if self.quiz.question_number <= len(self.quiz.question_list):
+            self.get_next_question()
+
+    def answer_false(self):
+        self.quiz.check_answer("False")
+        if self.quiz.question_number <= len(self.quiz.question_list):
+            self.get_next_question()
