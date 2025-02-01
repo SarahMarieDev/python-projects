@@ -1,8 +1,8 @@
 import requests
-import json
+
 
 OWM_Endpoint = "https://api.openweathermap.org/data/2.5/forecast"
-api_key = "221fa2ea7381120da8cbd10ab2c16889"
+api_key = ""
 my_lat = 45.180809
 my_long = -89.683159
 
