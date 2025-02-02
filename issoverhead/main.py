@@ -62,4 +62,4 @@ def is_night():
 if is_iss_overhead() and is_night():
     send_email()
 
-# print("Program run successfully.")
+print("Program ran successfully on " + str(datetime.now()))
