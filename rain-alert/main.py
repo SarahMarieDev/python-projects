@@ -7,7 +7,7 @@ OWM_Endpoint = "https://api.openweathermap.org/data/2.5/forecast"
 api_key = os.environ.get('OWM_API_KEY')
 my_lat = 45.180809
 my_long = -89.683159
-account_sid = 'AC359d3d371feb4f9f3a31cbdef756d8e7'
+account_sid = os.environ.get('TWILIO_ACCT_SID')
 auth_token = os.environ.get('AUTH_TOKEN')
 
 weather_params = {
