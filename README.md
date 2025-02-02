@@ -20,7 +20,8 @@ A repository for all my practice challenges and projects built throughout [100 D
 [Password Manager](./password-manager/) 🔐 \
 [Automated Birthday Wisher](./birthday-wisher-extrahard/) 🎂 \
 [ISS Overhead](./iss-overhead) 🛰️ \
-[Quiz Game - GUI](./quizzler-app/) ⍰🤨
+[Quiz Game - GUI](./quizzler-app/) ⍰🤨 \
+[Rain Alert](./rain-alert) ☔️
 
 
 ### Practice Challenges
