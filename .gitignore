@@ -1,9 +1,11 @@
-.env/
-**/.env/
+.env
+**/.env
 
 .vscode/
 **/.idea/
 **/venv/
 
 .DS_Store
-**/.DS_Store/
+**/.DS_Store
+
+.gitignore
