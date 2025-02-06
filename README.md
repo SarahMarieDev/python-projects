@@ -21,7 +21,8 @@ A repository for all my practice challenges and projects built throughout [100 D
 [Automated Birthday Wisher](./birthday-wisher-extrahard/) 🎂 \
 [ISS Overhead](./iss-overhead) 🛰️ \
 [Quiz Game - GUI](./quizzler-app/) ⍰🤨 \
-[Rain Alert](./rain-alert) ☔️
+[Rain Alert](./rain-alert) ☔️ \
+[Stock Trading News Alert](./stock-news-alert) 🔻🔺
 
 
 ### Practice Challenges
