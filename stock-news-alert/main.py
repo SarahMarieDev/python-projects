@@ -7,12 +7,13 @@ from dotenv import load_dotenv
 
 load_dotenv(os.path.join(os.path.dirname(__file__), '..', '.env'))
 
-STOCK = "PYPL"
-COMPANY_NAME = "PayPal Holdings, Inc."
+STOCK = "NVDA"
+COMPANY_NAME = "NVIDIA Corporation"
 ALPHAVANTAGE_API_KEY = os.getenv("ALPHAVANTAGE_API_KEY")
 NEWS_API_KEY = os.getenv("NEWS_API_KEY")
 
-file_path = "stock_data.json"
+script_dir = os.path.dirname(os.path.abspath(__file__))
+file_path = os.path.join(script_dir, "stock_data.json")
 
 # STEP 1: Use https://www.alphavantage.co
 # When STOCK price increase/decreases by 5% between yesterday and the day before yesterday then print("Get News").
@@ -32,7 +33,7 @@ else:
     r.raise_for_status()
     data = r.json()
 
-    with open("stock_data.json", "w") as file:
+    with open(file_path, "w") as file:
         json.dump(data, file, indent=4)
 
     print("Saved API response to stock_data.json")
@@ -45,29 +46,47 @@ day_before_close = data["Time Series (Daily)"][dates[1]]["4. close"]
 print(yesterday_close)
 print(day_before_close)
 
-diff = day_before_close - yesterday_close
+diff = float(day_before_close) - float(yesterday_close)
 percentage_change = abs(round((diff / float(day_before_close)) * 100))
-print(percentage_change)
+print(diff, percentage_change)
 
-if percentage_change > 5:
-    print("Get News")
-
+if diff < 0:
+    icon = "🔻"
+else:
+    icon = "🔺"
 
 # STEP 2: Use https://newsapi.org
 # Instead of printing ("Get News"), actually get the first 3 news pieces for the COMPANY_NAME.
-news_endpoint = "https://newsapi.org/v2/everything"
-news_params = {
-    "q": COMPANY_NAME,
-    "from": day_before_close,
-    "to": yesterday_close,
-    "apiKey": NEWS_API_KEY
-}
-response = requests.get(url=news_endpoint, params=news_params)
-response.raise_for_status()
-news_data = response.json()
-print(news_data)
+if percentage_change >= 5:
+    news_endpoint = "https://newsapi.org/v2/everything"
+    news_params = {
+        "q": COMPANY_NAME,
+        "from": yesterday_close,
+        "to": yesterday_close,
+        "language": "en",
+        "sortBy": "popularity",
+        "apiKey": NEWS_API_KEY,
+        "pageSize": 3,
+        "page": 1
+    }
+    response = requests.get(url=news_endpoint, params=news_params)
+    response.raise_for_status()
+    news_data = response.json()
+#    print(news_data)
+
 # STEP 3: Use https://www.twilio.com
 # Send a separate message with the percentage change and each article's title and description to your phone number.
+    account_sid = os.getenv('TWILIO_ACCT_SID')
+    auth_token = os.getenv('AUTH_TOKEN')
+    client = Client(account_sid, auth_token)
+    
+    for article in news_data["articles"]:
+        message = client.messages.create(
+            from_='whatsapp:+14155238886',
+            body=f"{STOCK}: {icon}{percentage_change}%\nHeadline: {article['title']}\nBrief: {article['description']}\n",
+            to='whatsapp:+17153489399'
+        )
+        print(message.status)
 
 
 #Optional: Format the SMS message like this: 
