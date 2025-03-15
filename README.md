@@ -1,5 +1,5 @@
-# 100 Days of Code - The Complete Python Bootcamp
-A repository for all my practice challenges and projects built throughout [100 Days of Code - The Complete Python Bootcamp](https://www.udemy.com/course/100-days-of-code)
+# Python Projects
+A collection of smaller portfolio projects written in Python that don't need their own repository.
 
 ### Projects
 
