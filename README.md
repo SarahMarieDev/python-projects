@@ -22,7 +22,8 @@ A collection of smaller portfolio projects written in Python that don't need the
 [ISS Overhead](./iss-overhead) 🛰️ \
 [Quiz Game - GUI](./quizzler-app/) ⍰🤨 \
 [Rain Alert](./rain-alert) ☔️ \
-[Stock Trading News Alert](./stock-news-alert) 🔻🔺
+[Stock Trading News Alert](./stock-news-alert) 🔻🔺 \
+[Pixela Habit Tracker](./habit-tracker/) 🔀
 
 
 ### Practice Challenges
