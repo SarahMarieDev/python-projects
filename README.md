@@ -23,7 +23,8 @@ A collection of smaller portfolio projects written in Python that don't need the
 [Quiz Game - GUI](./quizzler-app/) ⍰🤨 \
 [Rain Alert](./rain-alert) ☔️ \
 [Stock Trading News Alert](./stock-news-alert) 🔻🔺 \
-[Pixela Habit Tracker](./habit-tracker/) 🔀
+[Pixela Habit Tracker](./habit-tracker/) 🔀 \
+[Workout Tracker with Google Sheets](./workout-tracker/) 🏋🏻‍♀️
 
 
 ### Practice Challenges
