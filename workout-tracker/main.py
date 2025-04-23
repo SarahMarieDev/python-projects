@@ -8,11 +8,12 @@ load_dotenv()
 
 APP_ID = os.getenv('NUTRITIONIX_APP_ID')
 API_KEY = os.getenv('NUTRITIONIX_API_KEY')
+TOKEN = os.getenv('SHEETY_TOKEN')
 
 base_url = "https://trackapi.nutritionix.com"
 exercise_endpoint = "/v2/natural/exercise"
 
-#user_input = input("Tell me which exercises you did: ")
+user_input = input("Tell me which exercises you did: ")
 
 headers = {
     "x-app-id": APP_ID,
@@ -20,19 +21,20 @@ headers = {
 }
 
 request_body = {
-    "query": "I ran 5k and cycled 30 min"
+    "query": user_input
 }
 
 
 response = requests.post(url=f"{base_url}{exercise_endpoint}", json=request_body, headers=headers)
 
 exercise_data = json.loads(response.text)
-print(json.dumps(exercise_data, indent=2))
+#print(json.dumps(exercise_data, indent=2))
 
 sheety_url = "https://api.sheety.co/93ee438cd8c9e99f55862b9897a19e34/workoutTracking/workouts"
 
 sheety_headers = {
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
+    "Authorization": TOKEN
 }
 
 current_date = datetime.now().strftime("%m/%d/%Y")
