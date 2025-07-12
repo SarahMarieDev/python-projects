@@ -1,3 +1,9 @@
 class FlightSearch:
     #This class is responsible for talking to the Flight Search API.
-    pass
+    
+    def __init__(self):
+        self.base_url = ("")
+        
+        
+    def get_iata_code(self, city):
+        return "TESTING"

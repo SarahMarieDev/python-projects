@@ -14,4 +14,14 @@ class DataManager:
     def get_prices(self):
         response = requests.get(url=self.base_url, headers=self.headers)
         response.raise_for_status()
-        return response.text
+        return response.json().get("prices", [])
+    
+    def update_iata_code(self, row_id, iata_code):
+        body = {
+            "price": {
+                "iataCode": iata_code
+            }
+        }
+        response = requests.put(url=f"{self.base_url}/{row_id}", json=body, headers=self.headers)
+        response.raise_for_status()
+        
