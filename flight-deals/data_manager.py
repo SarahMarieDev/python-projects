@@ -1,20 +1,17 @@
 import requests
-import os
-import json
-from dotenv import load_dotenv
-from datetime import *
-
-load_dotenv()
-
-TOKEN = os.getenv('FLIGHT_DEALS_TOKEN')
 
 class DataManager:
     #This class is responsible for talking to the Google Sheet.
-    base_url = "https://api.sheety.co/93ee438cd8c9e99f55862b9897a19e34/flightDeals/prices"
     
-    sheety_headers = {
-        "Content-Type": "application/json"
-    }
-    
-    response = requests.get(url=base_url, headers=sheety_headers)
-    print(response.text)
+    def __init__(self):
+        self.base_url = (
+            "https://api.sheety.co/93ee438cd8c9e99f55862b9897a19e34/flightDeals/prices"
+        )
+        self.headers = {
+            "Content-Type": "application/json"
+        }
+        
+    def get_prices(self):
+        response = requests.get(url=self.base_url, headers=self.headers)
+        response.raise_for_status()
+        return response.text
