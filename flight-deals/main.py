@@ -5,7 +5,6 @@ from flight_search import FlightSearch
 data_manager = DataManager()
 sheet_data = data_manager.get_prices()
 
-
 flight_search = FlightSearch()
 
 for row in sheet_data:
