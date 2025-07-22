@@ -3,26 +3,27 @@ import requests
 from requests.auth import HTTPBasicAuth
 from dotenv import load_dotenv
 
+load_dotenv()
+SHEETY_PRICES_ENDPOINT = "https://api.sheety.co/93ee438cd8c9e99f55862b9897a19e34/flightDeals/prices"
+
 class DataManager:
-    #This class is responsible for talking to the Google Sheet.
-    load_dotenv()
     
     def __init__(self):
         TOKEN = os.getenv('FD_AUTH')
-        self.base_url = (
-            "https://api.sheety.co/93ee438cd8c9e99f55862b9897a19e34/flightDeals/prices"
-        )
         self.headers = {
             "Content-Type": "application/json",
             "Authorization": TOKEN
         }
+        self.destination_data = {}
         
-    def get_prices(self):
-        response = requests.get(url=self.base_url, headers=self.headers)
+    def get_destination_data(self):
+        response = requests.get(url=SHEETY_PRICES_ENDPOINT, headers=self.headers)
         response.raise_for_status()
-        return response.json().get("prices", [])
+        data = response.json()
+        self.destination_data = data["prices"]
+        return self.destination_data
     
-    def update_iata_code(self, row_id, iata_code):
+    def update_destinations_codes(self, row_id, iata_code):
         body = {
             "price": {
                 "iataCode": iata_code
