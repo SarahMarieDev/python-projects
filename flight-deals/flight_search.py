@@ -2,6 +2,7 @@ import os
 from dotenv import load_dotenv
 import requests
 from datetime import datetime
+from amadeus import Client, Location, ResponseError
 
 load_dotenv()
 
@@ -9,16 +10,17 @@ IATA_ENDPOINT = "https://test.api.amadeus.com/v1/reference-data/locations/cities
 FLIGHT_ENDPOINT = "https://test.api.amadeus.com/v2/shopping/flight-offers"
 TOKEN_ENDPOINT = "https://test.api.amadeus.com/v1/security/oauth2/token"
 
+
 class FlightSearch:
 
     def __init__(self):
         self._api_key = os.getenv("AMADEUS_API_KEY")
         self._api_secret = os.getenv("AMADEUS_API_SECRET")
         self._token = self._get_new_token()
-    
+
     def _get_new_token(self):
         header = {
-           "Content-Type": 'application/x-www-form-urlencoded' 
+            "Content-Type": 'application/x-www-form-urlencoded'
         }
         body = {
             'grant_type': 'client_credentials',
@@ -27,10 +29,10 @@ class FlightSearch:
         }
         response = requests.post(url=TOKEN_ENDPOINT, headers=header, data=body)
         # New bearer token. Typically expires in 1799 seconds (30min)
-        print(f"Your token is {response.json()["access_token"]}")
-        print(f"Your token expires in {response.json()["expires_in"]} seconds")
+        print(f"Your token is {response.json()['access_token']}")
+        print(f"Your token expires in {response.json()['expires_in']} seconds")
         return response.json()["access_token"]
-        
+
     def get_destination_code(self, city_name):
         print(f"Using this token to get destination {self._token}")
         headers = {
@@ -39,14 +41,14 @@ class FlightSearch:
         query = {
             "keyword": city_name,
             "max": "2",
-            "include": "AIRPORTS"       
+            "include": "AIRPORTS"
         }
         response = requests.get(
             url=IATA_ENDPOINT,
             headers=headers,
             params=query
         )
-        
+
         print(f"Status code {response.status_code}. Airport IATA: {response.text}")
         try:
             code = response.json()["data"][0]['iataCode']
@@ -56,5 +58,5 @@ class FlightSearch:
         except KeyError:
             print(f"KeyError: No airport code found for {city_name}.")
             return "Not Found"
-        
+
         return code
